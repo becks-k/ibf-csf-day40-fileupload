@@ -1,0 +1,27 @@
+<div>
+    <h2>Employee Details</h2>
+    <br>
+    <div>
+        <table>
+            <tbody *ngIf="employee$ | async as emp">
+                <tr>
+                    <td>First Name</td>
+                    <td>{{emp.firstName}}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>{{emp.lastName}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{emp.email}}</td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><img [src]="emp.profileUrl" alt="profile pic"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a [routerLink]="['/employees']">Back</a>
+    </div>
+</div>

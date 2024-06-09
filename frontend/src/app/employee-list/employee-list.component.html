@@ -1,0 +1,27 @@
+<div>
+    <h3>Employee List</h3>
+    <table>
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Profile Url</th>
+            <th>Action</th>
+        </thead>
+        <tbody *ngIf=" employees$ | async as employees; else loading">
+            <tr *ngFor="let emp of employees">
+                <td>{{emp.firstName}}</td>
+                <td>{{emp.lastName}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.profileUrl}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/employee', emp.id]">Details</button>
+                    <button type="button" [routerLink]="['/update', emp.id]">Update</button>
+                    <button type="button" (click)="delete(emp.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #loading><p>No data available</p></ng-template>
